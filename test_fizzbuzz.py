@@ -1,6 +1,16 @@
 import pytest
-from fizzbuzz import fizzbuzz  # Import function (yet to be implemented)
+from fizzbuzz import fizzbuzz
 
-def test_returns_number():
-	simple_number = 1 # avoid magic numbers
-	assert fizzbuzz(simple_number) == simple_number # Expect 1 to return 1
+@pytest.mark.parametrize("n, expected", [
+	(3, "Fizz"),
+	(6, "Fizz"),
+	(5, "Buzz"),
+	(10, "Buzz"),
+	(15, "FizzBuzz"),
+	(30, "FizzBuzz"),
+	(1, 1),
+	(2, 2),
+	(7, 7)
+])
+def test_fizzbuzz(n, expected):
+	assert fizzbuzz(n) == expected
